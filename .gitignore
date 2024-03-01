@@ -5,6 +5,8 @@
 /tmp
 /out-tsc
 /bazel-out
+*.log
+.firebase
 
 # Node
 /node_modules
