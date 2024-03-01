@@ -1,11 +1,14 @@
 import { Component, inject } from '@angular/core';
 import { doc, Firestore, setDoc } from '@angular/fire/firestore';
+import { MatBadge } from '@angular/material/badge';
+import { MatButton } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, MatButton, MatIcon, MatBadge],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
