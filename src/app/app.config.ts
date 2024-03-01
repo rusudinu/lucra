@@ -5,6 +5,7 @@ import { routes } from './app.routes';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideRouter(routes), importProvidersFrom(provideFirebaseApp(() => initializeApp({
@@ -15,5 +16,5 @@ export const appConfig: ApplicationConfig = {
     'authDomain': 'lucra-expenses.firebaseapp.com',
     'messagingSenderId': '930972789129',
     'measurementId': 'G-76N6P2NNTG'
-  }))), importProvidersFrom(provideAuth(() => getAuth())), importProvidersFrom(provideFirestore(() => getFirestore()))]
+  }))), importProvidersFrom(provideAuth(() => getAuth())), importProvidersFrom(provideFirestore(() => getFirestore())), provideAnimationsAsync()]
 };
