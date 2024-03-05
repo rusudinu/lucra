@@ -1,4 +1,4 @@
-name: Check lint and app start
+name: Check lint
 on: push
 jobs:
   check_lint:
