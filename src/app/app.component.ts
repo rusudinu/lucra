@@ -4,14 +4,14 @@ import { MatBadge } from '@angular/material/badge';
 import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { RouterOutlet } from '@angular/router';
-import { NavbarComponent } from './common/navbar/navbar.component';
 
+import { NavbarComponent } from './common/navbar/navbar.component';
 import { UserLoginComponent } from './user/user-login/user-login.component';
 
 @Component({
     selector: 'app-root',
     standalone: true,
-    imports: [RouterOutlet, MatButton, MatIcon, MatBadge, UserLoginComponent],
+    imports: [RouterOutlet, MatButton, MatIcon, MatBadge, UserLoginComponent, NavbarComponent],
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss',
 })
