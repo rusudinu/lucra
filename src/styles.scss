@@ -1,0 +1,30 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+simple-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+//noinspection HtmlDeprecatedTag
+mat-spinner {
+    margin: 3rem auto;
+    display: block;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
