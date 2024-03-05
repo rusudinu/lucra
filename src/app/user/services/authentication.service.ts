@@ -29,7 +29,7 @@ export class AuthenticationService {
                 alert('User registered successfully');
                 this.router.navigate(['/sign-in']);
             },
-            err => {
+            () => {
                 alert('Something went wrong');
                 this.router.navigate(['/sign-up']);
             },

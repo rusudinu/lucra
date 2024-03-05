@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { doc, Firestore, setDoc } from '@angular/fire/firestore';
+import { Firestore } from '@angular/fire/firestore';
 import { MatBadge } from '@angular/material/badge';
 import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
