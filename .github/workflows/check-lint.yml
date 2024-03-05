@@ -1,7 +1,7 @@
 name: Check lint and app start
 on: push
 jobs:
-  check_lint_app_start:
+  check_lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3

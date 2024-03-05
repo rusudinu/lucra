@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
     templateUrl: './dashboard.component.html',
     styleUrl: './dashboard.component.scss',
 })
-export class DashboardComponent {}
+export class DashboardComponent {
+    constructor() {
+        throw new Error('Crash the app');
+    }
+}
