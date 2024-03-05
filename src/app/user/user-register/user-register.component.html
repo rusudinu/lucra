@@ -1,0 +1,24 @@
+<div class="auth-container">
+  <h3>Sign Up</h3>
+  <form [formGroup]="signUpForm" (ngSubmit)="signUp()" class="auth-form">
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Email Address</mat-label>
+      <input matInput type="email" formControlName="username" placeholder="Email Address">
+      <mat-error *ngIf="signUpForm.get('username')?.invalid">
+        Please enter a valid email address
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" formControlName="password" placeholder="Password">
+      <mat-error *ngIf="signUpForm.get('password')?.invalid">
+        Password is required
+      </mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit" class="btn-block" [disabled]="!signUpForm.valid">Sign Up</button>
+  </form>
+  <div class="redirect-container">
+    <span>Already have an account?</span>
+    <a routerLink="/sign-in" class="redirect">Log In</a>
+  </div>
+</div>
