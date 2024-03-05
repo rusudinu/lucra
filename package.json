@@ -10,7 +10,8 @@
     "test-headless": "ng test --watch=false --karma-config src/karma.conf.ci.js",
     "prepare": "husky",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "prettier:all": "prettier --write \"src/**/*.ts\" \"src/**/*.html\" \"src/**/*.scss\""
   },
   "private": true,
   "dependencies": {
