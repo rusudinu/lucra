@@ -12,3 +12,19 @@ body {
     margin: 0;
     font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
+
+simple-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+//noinspection HtmlDeprecatedTag
+mat-spinner {
+    margin: 3rem auto;
+    display: block;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
