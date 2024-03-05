@@ -1,7 +1,7 @@
-name: Check lint
+name: Check lint and app start
 on: push
 jobs:
-  build_and_deploy:
+  check_lint_app_start:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -17,7 +17,6 @@ jobs:
         env:
           cache-name: cache-node-modules
         with:
-          # caching node_modules
           path: node_modules
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
@@ -37,3 +36,7 @@ jobs:
       - name: Lint
         run: |
           yarn lint
+
+      - name: Start app
+        run: |
+          yarn test-headless

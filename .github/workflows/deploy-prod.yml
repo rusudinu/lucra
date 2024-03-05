@@ -4,7 +4,7 @@ name: Deploy to prod
     branches:
       - prod
 jobs:
-  build_and_deploy:
+  deploy_prod:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -20,7 +20,6 @@ jobs:
         env:
           cache-name: cache-node-modules
         with:
-          # caching node_modules
           path: node_modules
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
