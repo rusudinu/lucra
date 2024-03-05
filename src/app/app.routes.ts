@@ -1,21 +1,12 @@
-import { Component } from '@angular/core';
 import { Routes } from '@angular/router';
 
-@Component({
-  selector: 'app-dummy',
-  standalone: true,
-  template: '<h1>Dummy Component</h1>'
-})
-export class DummyComponent {
-}
+import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
+import { UserLoginComponent } from './user/user-login/user-login.component';
+import { UserRegisterComponent } from './user/user-register/user-register.component';
 
 export const routes: Routes = [
-  { path: '', component: DummyComponent },
-  { path: 'lucra', component: DummyComponent },
-  { path: 'add-expense', component: DummyComponent },
-  { path: 'add-income', component: DummyComponent },
-  { path: 'investments-calculator', component: DummyComponent },
-  { path: 'reports', component: DummyComponent },
-  { path: 'pending-requests', component: DummyComponent },
-  { path: 'previous-requests', component: DummyComponent }
+    { path: '', redirectTo: '/sign-in', pathMatch: 'full' },
+    { path: 'sign-in', component: UserLoginComponent },
+    { path: 'sign-up', component: UserRegisterComponent },
+    { path: 'dashboard', component: DashboardComponent },
 ];
