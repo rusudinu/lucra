@@ -1,34 +1,39 @@
-import {Injectable} from '@angular/core';
-import {createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut} from '@angular/fire/auth';
-import {Router} from '@angular/router';
+import { Injectable } from '@angular/core';
+import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: 'root',
 })
 export class AuthenticationService {
     auth = getAuth();
 
-    constructor(private router: Router) {
-    }
+    constructor(private router: Router) {}
 
     signIn(email: string, password: string) {
-        signInWithEmailAndPassword(this.auth, email, password).then(() => {
-            localStorage.setItem('token', 'true');
-            this.router.navigate(['dashboard']);
-        }, err => {
-            alert(err.message);
-            this.router.navigate(['/sign-in']);
-        });
+        signInWithEmailAndPassword(this.auth, email, password).then(
+            () => {
+                localStorage.setItem('token', 'true');
+                this.router.navigate(['dashboard']);
+            },
+            err => {
+                alert(err.message);
+                this.router.navigate(['/sign-in']);
+            },
+        );
     }
 
     register(email: string, password: string) {
-        createUserWithEmailAndPassword(this.auth, email, password).then(() => {
-            alert('User registered successfully');
-            this.router.navigate(['/sign-in']);
-        }, err => {
-            alert('Something went wrong');
-            this.router.navigate(['/sign-up']);
-        });
+        createUserWithEmailAndPassword(this.auth, email, password).then(
+            () => {
+                alert('User registered successfully');
+                this.router.navigate(['/sign-in']);
+            },
+            err => {
+                alert('Something went wrong');
+                this.router.navigate(['/sign-up']);
+            },
+        );
     }
 
     logout() {
