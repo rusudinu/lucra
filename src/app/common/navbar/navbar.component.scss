@@ -1,0 +1,74 @@
+.active-link {
+    color: #fff;
+    background-color: rgba(0, 123, 255, 0.34);
+}
+
+span {
+    color: #fff;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+}
+
+a:hover {
+    color: #fff;
+    background-color: rgba(0, 123, 255, 0.34);
+    border-color: #007bff;
+}
+
+.profile-dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #ffffff;
+    min-width: 160px;
+    z-index: 1;
+}
+
+.profile:hover .profile-dropdown {
+    display: block;
+    cursor: pointer;
+}
+
+.top-bar {
+    background-color: var(--bs-purple);
+}
+
+.navbar-brand-image {
+    height: 2.5rem;
+    width: auto;
+    object-fit: contain;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.nav-custom {
+    background-color: var(--bs-purple);
+}
+
+nav {
+    font-weight: bold;
+}
+
+.nav-offset {
+    height: 5rem;
+}
+
+@media only screen and (max-width: 800px) {
+    .nav-offset {
+        height: 7rem;
+    }
+}
+
+.profile:hover .hide-name {
+    display: none;
+}
+
+.profile:hover .profile-dropdown {
+    display: block;
+    cursor: pointer;
+}
