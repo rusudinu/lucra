@@ -15,7 +15,6 @@ import { UserLoginComponent } from './user/user-login/user-login.component';
     styleUrl: './app.component.scss',
 })
 export class AppComponent {
-    title = 'lucra';
     firestore: Firestore = inject(Firestore);
 
     constructor() {
