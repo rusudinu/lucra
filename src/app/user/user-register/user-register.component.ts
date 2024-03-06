@@ -1,6 +1,6 @@
 import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
 import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
@@ -18,13 +18,14 @@ import { AuthenticationService } from '../services/authentication.service';
 })
 export class UserRegisterComponent {
     signUpForm: FormGroup = new FormGroup({
-        username: new FormControl(),
-        password: new FormControl(),
+        username: new FormControl('', Validators.required),
+        password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+        name: new FormControl('', Validators.required),
     });
 
     constructor(private authenticationService: AuthenticationService) {}
 
     signUp() {
-        this.authenticationService.register(this.signUpForm.value.username, this.signUpForm.value.password);
+        this.authenticationService.register(this.signUpForm.value.username, this.signUpForm.value.password, this.signUpForm.value.name);
     }
 }

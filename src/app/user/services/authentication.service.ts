@@ -1,5 +1,6 @@
-import { Injectable } from '@angular/core';
-import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
+import { inject, Injectable } from '@angular/core';
+import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut, updateProfile, User } from '@angular/fire/auth';
+import { doc, Firestore, setDoc } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -7,6 +8,7 @@ import { Router } from '@angular/router';
 })
 export class AuthenticationService {
     auth = getAuth();
+    firestore: Firestore = inject(Firestore);
 
     constructor(private router: Router) {}
 
@@ -23,23 +25,35 @@ export class AuthenticationService {
         );
     }
 
-    register(email: string, password: string) {
+    register(email: string, password: string, name: string) {
         createUserWithEmailAndPassword(this.auth, email, password).then(
-            () => {
-                alert('User registered successfully');
-                this.router.navigate(['/sign-in']);
+            userCredential => {
+                this.createUserFirebaseDoc(userCredential.user, name).then(() => {
+                    alert('User registered successfully');
+                    this.router.navigate(['/dashboard']).then();
+                });
             },
             () => {
                 alert('Something went wrong');
-                this.router.navigate(['/sign-up']);
+                this.router.navigate(['/sign-up']).then();
             },
         );
+    }
+
+    createUserFirebaseDoc(user: User, name: string) {
+        updateProfile(user, { displayName: name }).then();
+        const userRef = doc(this.firestore, 'users', user.uid);
+        return setDoc(userRef, {
+            email: user.email,
+            uid: user.uid,
+            name,
+        });
     }
 
     logout() {
         signOut(this.auth).then(() => {
             localStorage.removeItem('token');
-            this.router.navigate(['/sign-in']);
+            this.router.navigate(['/sign-in']).then();
         });
     }
 }
