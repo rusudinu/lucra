@@ -47,6 +47,11 @@ export class InvestmentCalculatorComponent implements OnInit {
     ngOnInit() {
         this.investmentForm.valueChanges.subscribe(formValue => {
             this.computedValue = formValue.initialInvestment * formValue.additionalInvestment;
+            this.chartOptions.data[0].dataPoints = [
+                { name: 'Start Amount', y: formValue.initialInvestment },
+                { name: 'Total Contribution', y: this.computedValue },
+                { name: 'Interest', y: formValue.expectedRateOfReturn },
+            ];
         });
     }
 
@@ -66,7 +71,7 @@ export class InvestmentCalculatorComponent implements OnInit {
                 type: 'pie',
                 indexLabel: '{name}: {y}%',
                 dataPoints: [
-                    { name: 'Start Amount', y: this.investmentForm.get('additionalInvestment')?.value },
+                    { name: 'Start Amount', y: 0 },
                     { name: 'Total Contribution', y: 3.7 },
                     { name: 'Interest', y: 36.4 },
                 ],
