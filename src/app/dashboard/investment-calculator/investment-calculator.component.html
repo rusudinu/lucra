@@ -1,0 +1,37 @@
+<div class="investment-container">
+    <form [formGroup]="investmentForm" (ngSubmit)="onCalculateInvestment()" class="investment-form">
+        <div class="row">
+            <mat-form-field appearance="fill" class="form-field">
+                <!--        <mat-label>Initial Investment</mat-label>-->
+                <div class="input-icon input-icon-left">
+                    <i>$</i>
+                    <input matInput type="number" formControlName="initialInvestment" placeholder="Initial Investment" />
+                </div>
+                <mat-error *ngIf="investmentForm.get('initialInvestment')?.invalid">This field is required!</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="form-field">
+                <mat-label>Additional Investment</mat-label>
+                <input matInput type="number" formControlName="additionalInvestment" placeholder="Additional Investment" />
+                <mat-error *ngIf="investmentForm.get('additionalInvestment')?.invalid">This field is required!</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="form-field">
+                <mat-label>Frequency Of Investment</mat-label>
+                <mat-select formControlName="frequencyOfInvestment" placeholder="frequencyOfInvestment">
+                    <mat-option *ngFor="let frequency of frequencyOptions" [value]="frequency">{{ frequency }}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="investmentForm.get('frequencyOfInvestment')?.invalid">This field is required!</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="form-field">
+                <mat-label>Years To Grow</mat-label>
+                <input matInput type="number" formControlName="yearsToGrow" placeholder="Years To Grow" />
+                <mat-error *ngIf="investmentForm.get('yearsToGrow')?.invalid">This field is required!</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="form-field">
+                <mat-label>Expected Rate Of Return</mat-label>
+                <input matInput type="number" formControlName="expectedRateOfReturn" placeholder="Expected Rate Of Return" />
+                <mat-error *ngIf="investmentForm.get('expectedRateOfReturn')?.invalid">This field is required!</mat-error>
+            </mat-form-field>
+            <button mat-raised-button color="primary" type="submit" [disabled]="!investmentForm.valid">Calculate</button>
+        </div>
+    </form>
+</div>
