@@ -13,23 +13,21 @@ export class AuthenticationService {
     constructor(private router: Router) {}
 
     signIn(email: string, password: string) {
-        signInWithEmailAndPassword(this.auth, email, password).then(
+        return signInWithEmailAndPassword(this.auth, email, password).then(
             () => {
-                localStorage.setItem('token', 'true');
-                this.router.navigate(['dashboard']);
+                this.router.navigate(['dashboard']).then();
             },
             err => {
                 alert(err.message);
-                this.router.navigate(['/sign-in']);
+                this.router.navigate(['/sign-in']).then();
             },
         );
     }
 
     register(email: string, password: string, name: string) {
-        createUserWithEmailAndPassword(this.auth, email, password).then(
+        return createUserWithEmailAndPassword(this.auth, email, password).then(
             userCredential => {
                 this.createUserFirebaseDoc(userCredential.user, name).then(() => {
-                    alert('User registered successfully');
                     this.router.navigate(['/dashboard']).then();
                 });
             },
@@ -52,7 +50,6 @@ export class AuthenticationService {
 
     logout() {
         signOut(this.auth).then(() => {
-            localStorage.removeItem('token');
             this.router.navigate(['/sign-in']).then();
         });
     }

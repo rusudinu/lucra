@@ -16,7 +16,10 @@
             <input matInput type="password" formControlName="password" placeholder="Password" />
             <mat-error *ngIf="signUpForm.get('password')?.invalid"> Password is required</mat-error>
         </mat-form-field>
-        <button mat-raised-button color="primary" type="submit" class="btn-block" [disabled]="!signUpForm.valid">Sign Up</button>
+        <button *ngIf="!loading" mat-raised-button color="primary" type="submit" class="btn-block" [disabled]="!signUpForm.valid">
+            Sign Up
+        </button>
+        <mat-spinner *ngIf="loading" class="spinner" diameter="30"></mat-spinner>
     </form>
     <div class="redirect-container">
         <span>Already have an account?</span>
