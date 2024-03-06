@@ -37,5 +37,18 @@
             </div>
         </form>
     </div>
-    <div class="col-md-9"></div>
+    <div class="col-md-9">
+        <ngx-charts-line-chart
+            [view]="view"
+            [legend]="legend"
+            [showXAxisLabel]="showXAxisLabel"
+            [showYAxisLabel]="showYAxisLabel"
+            [xAxis]="xAxis"
+            [yAxis]="yAxis"
+            [xAxisLabel]="xAxisLabel"
+            [yAxisLabel]="yAxisLabel"
+            [timeline]="timeline"
+            [results]="data">
+        </ngx-charts-line-chart>
+    </div>
 </div>
