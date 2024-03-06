@@ -24,10 +24,10 @@ export class AuthenticationService {
         );
     }
 
-    register(email: string, password: string, name: string) {
+    register(email: string, password: string, name: string, advisorAccount: boolean) {
         return createUserWithEmailAndPassword(this.auth, email, password).then(
             userCredential => {
-                this.createUserFirebaseDoc(userCredential.user, name).then(() => {
+                this.createUserFirebaseDoc(userCredential.user, name, advisorAccount).then(() => {
                     this.router.navigate(['/dashboard']).then();
                 });
             },
@@ -38,13 +38,14 @@ export class AuthenticationService {
         );
     }
 
-    createUserFirebaseDoc(user: User, name: string) {
+    createUserFirebaseDoc(user: User, name: string, advisorAccount: boolean) {
         updateProfile(user, { displayName: name }).then();
         const userRef = doc(this.firestore, 'users', user.uid);
         return setDoc(userRef, {
             email: user.email,
             uid: user.uid,
             name,
+            advisorAccount,
         });
     }
 
