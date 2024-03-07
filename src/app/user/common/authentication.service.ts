@@ -9,8 +9,7 @@ import { Router } from '@angular/router';
 export class AuthenticationService {
     auth = getAuth();
     firestore: Firestore = inject(Firestore);
-
-    constructor(private router: Router) {}
+    router: Router = inject(Router);
 
     signIn(email: string, password: string) {
         return signInWithEmailAndPassword(this.auth, email, password).then(
