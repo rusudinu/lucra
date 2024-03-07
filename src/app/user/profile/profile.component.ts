@@ -1,4 +1,4 @@
-import { NgIf } from '@angular/common';
+import { AsyncPipe, NgIf } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { getAuth, updateProfile } from '@angular/fire/auth';
 import { doc, Firestore, updateDoc } from '@angular/fire/firestore';
@@ -18,7 +18,18 @@ import { IUser } from '../user.model';
 @Component({
     selector: 'app-profile',
     standalone: true,
-    imports: [MatButton, MatError, MatFormField, MatInput, MatLabel, ReactiveFormsModule, MatSlideToggle, NgIf, MatProgressSpinner],
+    imports: [
+        MatButton,
+        MatError,
+        MatFormField,
+        MatInput,
+        MatLabel,
+        ReactiveFormsModule,
+        MatSlideToggle,
+        NgIf,
+        MatProgressSpinner,
+        AsyncPipe,
+    ],
     templateUrl: './profile.component.html',
     styleUrl: './profile.component.scss',
 })

@@ -14,4 +14,9 @@
         </button>
         <mat-spinner *ngIf="loading" class="spinner" diameter="30"></mat-spinner>
     </form>
+    <div *ngIf="userData$ | async as user" class="unmodifiable-user-data-container">
+        <p><b>Other account data (unmodifiable)</b></p>
+        <p>Email: {{ user.email }}</p>
+        <p>UID: {{ user.uid }}</p>
+    </div>
 </div>
