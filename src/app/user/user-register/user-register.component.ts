@@ -10,7 +10,7 @@ import { MatOption, MatSelect } from '@angular/material/select';
 import { MatSlideToggle } from '@angular/material/slide-toggle';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
-import { AuthenticationService } from '../services/authentication.service';
+import { AuthenticationService } from '../common/authentication.service';
 
 @Component({
     selector: 'app-user-register',

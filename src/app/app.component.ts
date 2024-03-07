@@ -22,8 +22,7 @@ import { UserLoginComponent } from './user/user-login/user-login.component';
 export class AppComponent implements OnInit {
     firestore: Firestore = inject(Firestore);
     auth = getAuth();
-
-    constructor(private readonly store: Store<IAppState>) {}
+    store: Store<IAppState> = inject(Store);
 
     ngOnInit() {
         onAuthStateChanged(this.auth, user => {
