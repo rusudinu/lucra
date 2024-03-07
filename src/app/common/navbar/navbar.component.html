@@ -5,27 +5,32 @@
         </a>
         <div [ngbCollapse]="isNavbarCollapsed" class="collapse navbar-collapse ms-2" id="navbarsDefault">
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a routerLink="/dashboard" class="nav-link me-1" routerLinkActive="active-link">Overview</a>
-                </li>
-                <li class="nav-item">
-                    <a routerLink="/add-expense" class="nav-link me-1" routerLinkActive="active-link">Add expense</a>
-                </li>
-                <li class="nav-item">
-                    <a routerLink="/add-income" class="nav-link me-1" routerLinkActive="active-link">Add income</a>
-                </li>
-                <li class="nav-item">
-                    <a routerLink="/investments-calculator" class="nav-link me-1" routerLinkActive="active-link">Investments calculator</a>
-                </li>
-                <li class="nav-item">
-                    <a routerLink="/reports" class="nav-link me-1" routerLinkActive="active-link">Reports</a>
-                </li>
-                <li class="nav-item">
-                    <a routerLink="/pending-requests" class="nav-link me-1" routerLinkActive="active-link">Pending requests</a>
-                </li>
-                <li class="nav-item">
-                    <a routerLink="/previous-requests" class="nav-link me-1" routerLinkActive="active-link">Previous requests</a>
-                </li>
+                @if ((advisorAccount$ | async) === false) {
+                    <li class="nav-item">
+                        <a routerLink="/dashboard" class="nav-link me-1" routerLinkActive="active-link">Overview</a>
+                    </li>
+                    <li class="nav-item">
+                        <a routerLink="/add-expense" class="nav-link me-1" routerLinkActive="active-link">Add expense</a>
+                    </li>
+                    <li class="nav-item">
+                        <a routerLink="/add-income" class="nav-link me-1" routerLinkActive="active-link">Add income</a>
+                    </li>
+                    <li class="nav-item">
+                        <a routerLink="/investments-calculator" class="nav-link me-1" routerLinkActive="active-link"
+                            >Investments calculator</a
+                        >
+                    </li>
+                    <li class="nav-item">
+                        <a routerLink="/reports" class="nav-link me-1" routerLinkActive="active-link">Reports</a>
+                    </li>
+                } @else {
+                    <li class="nav-item">
+                        <a routerLink="/pending-requests" class="nav-link me-1" routerLinkActive="active-link">Pending requests</a>
+                    </li>
+                    <li class="nav-item">
+                        <a routerLink="/previous-requests" class="nav-link me-1" routerLinkActive="active-link">Previous requests</a>
+                    </li>
+                }
             </ul>
         </div>
         <a *ngIf="loggedIn" class="nav-link ms-4" routerLink="/profile" routerLinkActive="active-link">
