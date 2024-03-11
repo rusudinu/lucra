@@ -90,7 +90,7 @@ export class InvestmentCalculatorComponent implements OnInit {
             },
             {
                 name: 'Interest',
-                value: formValue.expectedRateOfReturn * totalContributions,
+                value: this.computedValue - initialInvestment - totalContributions,
             },
         );
         return chart;
