@@ -1,0 +1,78 @@
+<div class="row mx-3">
+    <div class="col-md-4">
+        <form [formGroup]="investmentForm">
+            <div class="row">
+                <mat-form-field appearance="fill" class="form-field">
+                    <mat-label>Initial Investment</mat-label>
+                    <input matInput type="number" formControlName="initialInvestment" placeholder="Initial Investment" />
+                    <span matTextPrefix>$&nbsp;</span>
+                    <mat-error *ngIf="investmentForm.get('initialInvestment')?.invalid">This field is required!</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill" class="form-field">
+                    <mat-label>Additional Investment</mat-label>
+                    <input matInput type="number" formControlName="additionalInvestment" placeholder="Additional Investment" />
+                    <span matTextPrefix>$&nbsp;</span>
+                    <mat-error *ngIf="investmentForm.get('additionalInvestment')?.invalid">This field is required!</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill" class="form-field">
+                    <mat-label>Frequency Of Investment</mat-label>
+                    <mat-select formControlName="frequencyOfInvestment" placeholder="frequencyOfInvestment">
+                        <mat-option *ngFor="let frequency of frequencyOptions" [value]="frequency">{{ frequency }}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="investmentForm.get('frequencyOfInvestment')?.invalid">This field is required!</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill" class="form-field">
+                    <mat-label>Years To Grow</mat-label>
+                    <input matInput type="number" formControlName="yearsToGrow" placeholder="Years To Grow" />
+                    <span matTextSuffix>Years</span>
+                    <mat-error *ngIf="investmentForm.get('yearsToGrow')?.invalid">This field is required!</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill" class="form-field">
+                    <mat-label>Expected Rate Of Return</mat-label>
+                    <input matInput type="number" formControlName="expectedRateOfReturn" placeholder="Expected Rate Of Return" />
+                    <span matTextSuffix>%</span>
+                    <mat-error *ngIf="investmentForm.get('expectedRateOfReturn')?.invalid">This field is required!</mat-error>
+                </mat-form-field>
+                <div *ngIf="computedValue > 0">
+                    <h1>Your results</h1>
+                    <h3>
+                        End Balance: <span>{{ computedValue }}</span>
+                    </h3>
+                    <h3>
+                        Start Amount: <span>{{ investmentForm.get('initialInvestment')?.value }}</span>
+                    </h3>
+                    <h3>
+                        Total Contributions: <span>{{ totalContributions }}</span>
+                    </h3>
+                    <h3>
+                        Total Interest: <span>{{ investmentForm.get('expectedRateOfReturn')?.value * totalContributions }}</span>
+                    </h3>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-4">
+        <ngx-charts-line-chart
+            [view]="view"
+            [legend]="legend"
+            [showXAxisLabel]="showXAxisLabel"
+            [showYAxisLabel]="showYAxisLabel"
+            [xAxis]="xAxis"
+            [yAxis]="yAxis"
+            [xAxisLabel]="xAxisLabel"
+            [yAxisLabel]="yAxisLabel"
+            [timeline]="timeline"
+            [results]="data">
+        </ngx-charts-line-chart>
+    </div>
+    <div class="col-md-4">
+        <ngx-charts-pie-chart
+            [view]="view"
+            [results]="piechartData"
+            [gradient]="gradient"
+            [legend]="showLegend"
+            [labels]="showLabels"
+            [doughnut]="isDoughnut">
+        </ngx-charts-pie-chart>
+    </div>
+</div>
