@@ -1,5 +1,5 @@
 <div class="row mx-3">
-    <div class="col-md-3">
+    <div class="col-md-4">
         <form [formGroup]="investmentForm">
             <div class="row">
                 <mat-form-field appearance="fill" class="form-field">
@@ -33,11 +33,25 @@
                     <span matTextSuffix>%</span>
                     <mat-error *ngIf="investmentForm.get('expectedRateOfReturn')?.invalid">This field is required!</mat-error>
                 </mat-form-field>
-                <span>{{ computedValue }}</span>
+                <div *ngIf="computedValue > 0">
+                    <h1>Your results</h1>
+                    <h3>
+                        End Balance: <span>{{ computedValue }}</span>
+                    </h3>
+                    <h3>
+                        Start Amount: <span>{{ investmentForm.get('initialInvestment')?.value }}</span>
+                    </h3>
+                    <h3>
+                        Total Contributions: <span>{{ totalContributions }}</span>
+                    </h3>
+                    <h3>
+                        Total Interest: <span>{{ investmentForm.get('expectedRateOfReturn')?.value * totalContributions }}</span>
+                    </h3>
+                </div>
             </div>
         </form>
     </div>
-    <div class="col-md-9">
+    <div class="col-md-4">
         <ngx-charts-line-chart
             [view]="view"
             [legend]="legend"
@@ -50,5 +64,15 @@
             [timeline]="timeline"
             [results]="data">
         </ngx-charts-line-chart>
+    </div>
+    <div class="col-md-4">
+        <ngx-charts-pie-chart
+            [view]="view"
+            [results]="piechartData"
+            [gradient]="gradient"
+            [legend]="showLegend"
+            [labels]="showLabels"
+            [doughnut]="isDoughnut">
+        </ngx-charts-pie-chart>
     </div>
 </div>
