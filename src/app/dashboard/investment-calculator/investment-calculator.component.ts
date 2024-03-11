@@ -64,8 +64,6 @@ export class InvestmentCalculatorComponent implements OnInit {
 
     ngOnInit() {
         this.investmentForm.valueChanges.subscribe(formValue => {
-            this.computedValue = formValue.initialInvestment * formValue.additionalInvestment;
-            this.totalContributions = formValue.yearsToGrow * (formValue.frequencyOfInvestment === 'Monthly' ? 12 : 1);
             this.data[0].series = this.calculateInvestmentGrowth(formValue);
             this.data = [...this.data];
             this.piechartData = this.generatePieChart(formValue);
@@ -74,6 +72,12 @@ export class InvestmentCalculatorComponent implements OnInit {
     }
 
     generatePieChart(formValue: any) {
+        this.computedValue =
+            formValue.initialInvestment *
+            (1 + formValue.expectedRateOfReturn / 100) **
+                (formValue.yearsToGrow * (formValue.frequencyOfInvestment === 'Monthly' ? 12 : 1));
+        this.totalContributions =
+            formValue.additionalInvestment * (formValue.yearsToGrow * (formValue.frequencyOfInvestment === 'Monthly' ? 12 : 1));
         const initialInvestment = formValue.initialInvestment ?? 0;
         const frequency = formValue.frequencyOfInvestment === 'Monthly' ? 12 : 1;
         const totalContributions = frequency * (formValue.yearsToGrow ?? 0);
