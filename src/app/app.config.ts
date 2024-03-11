@@ -4,8 +4,13 @@ import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideRouter } from '@angular/router';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { routes } from './app.routes';
+import { UserEffects } from './user/store/user.effects';
+import { UserReducer } from './user/store/user.reducer';
 
 export const appConfig: ApplicationConfig = {
     providers: [
@@ -26,5 +31,12 @@ export const appConfig: ApplicationConfig = {
         importProvidersFrom(provideAuth(() => getAuth())),
         importProvidersFrom(provideFirestore(() => getFirestore())),
         provideAnimationsAsync(),
+        importProvidersFrom(
+            StoreModule.forRoot({
+                User: UserReducer,
+            }),
+            StoreDevtoolsModule.instrument(),
+            EffectsModule.forRoot([UserEffects]),
+        ),
     ],
 };

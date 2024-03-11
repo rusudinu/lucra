@@ -1,0 +1,22 @@
+<div class="auth-container">
+    <h3>Update profile data</h3>
+    <form [formGroup]="userProfileForm" (ngSubmit)="updateProfile()" class="auth-form">
+        <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Name</mat-label>
+            <input matInput type="fname" formControlName="name" placeholder="Name" />
+            <mat-error *ngIf="userProfileForm.get('name')?.invalid"> Please enter a valid name</mat-error>
+        </mat-form-field>
+        <mat-slide-toggle formControlName="advisorAccount">
+            <span>Advisor Account</span>
+        </mat-slide-toggle>
+        <button *ngIf="!loading" mat-raised-button color="primary" type="submit" class="btn-block mt-4" [disabled]="!userProfileForm.valid">
+            Save
+        </button>
+        <mat-spinner *ngIf="loading" class="spinner" diameter="30"></mat-spinner>
+    </form>
+    <div *ngIf="userData$ | async as user" class="unmodifiable-user-data-container">
+        <p><b>Other account data (unmodifiable)</b></p>
+        <p>Email: {{ user.email }}</p>
+        <p>UID: {{ user.uid }}</p>
+    </div>
+</div>

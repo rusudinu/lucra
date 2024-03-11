@@ -1,0 +1,30 @@
+.auth-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.auth-container h3 {
+    text-align: center;
+}
+
+.auth-form {
+    margin-bottom: 20px;
+}
+
+.form-field {
+    width: 100%;
+}
+
+.btn-block {
+    width: 100%;
+}
+
+.unmodifiable-user-data-container {
+    text-align: left;
+    color: #007bff;
+}
