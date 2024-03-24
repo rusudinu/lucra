@@ -2,6 +2,7 @@ import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideRouter } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
@@ -38,5 +39,6 @@ export const appConfig: ApplicationConfig = {
             StoreDevtoolsModule.instrument(),
             EffectsModule.forRoot([UserEffects]),
         ),
+        { provide: MAT_DATE_LOCALE, useValue: 'en-UK' },
     ],
 };
