@@ -3,6 +3,7 @@ import { Routes } from '@angular/router';
 
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import { InvestmentCalculatorComponent } from './dashboard/investment-calculator/investment-calculator.component';
+import { TransferComponent } from './dashboard/transfer/transfer.component';
 import { ProfileComponent } from './user/profile/profile.component';
 import { UserLoginComponent } from './user/user-login/user-login.component';
 import { UserRegisterComponent } from './user/user-register/user-register.component';
@@ -30,14 +31,8 @@ export const routes: Routes = [
         data: { authGuardPipe: redirectUnauthorizedToLanding },
     },
     {
-        path: 'add-expense',
-        component: DashboardComponent,
-        canActivate: [AuthGuard],
-        data: { authGuardPipe: redirectUnauthorizedToLanding },
-    },
-    {
-        path: 'add-income',
-        component: DashboardComponent,
+        path: 'transfer',
+        component: TransferComponent,
         canActivate: [AuthGuard],
         data: { authGuardPipe: redirectUnauthorizedToLanding },
     },
