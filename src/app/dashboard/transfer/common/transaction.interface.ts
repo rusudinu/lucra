@@ -6,6 +6,7 @@ export interface ITransaction {
     recurring: boolean;
     recurrencePattern?: ERecurrence;
     recurrenceDate?: Date;
+    recurrenceStartDate?: Date;
 }
 
 export enum ETransactionType {

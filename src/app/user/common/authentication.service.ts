@@ -45,6 +45,7 @@ export class AuthenticationService {
             uid: user.uid,
             name,
             advisorAccount,
+            transactions: [],
         });
     }
 

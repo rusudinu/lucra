@@ -32,6 +32,16 @@
                     <mat-datepicker-toggle matIconSuffix [for]="recurrencePicker"></mat-datepicker-toggle>
                     <mat-datepicker #recurrencePicker></mat-datepicker>
                 </mat-form-field>
+                <mat-form-field *ngIf="transactionForm.get('recurrencePattern')?.value">
+                    <input
+                        matInput
+                        formControlName="recurrenceStartDate"
+                        placeholder="Recurrence Start Date"
+                        [matDatepicker]="recurrenceStartDatePicker"
+                        dataformatas="MM/DD/YYYY" />
+                    <mat-datepicker-toggle matIconSuffix [for]="recurrenceStartDatePicker"></mat-datepicker-toggle>
+                    <mat-datepicker #recurrenceStartDatePicker></mat-datepicker>
+                </mat-form-field>
             </div>
         </div>
     </div>
