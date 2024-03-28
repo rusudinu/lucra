@@ -1,5 +1,6 @@
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, DatePipe, KeyValuePipe, NgForOf, NgIf } from '@angular/common';
 import { Component, inject } from '@angular/core';
+import { MatButton } from '@angular/material/button';
 import { Store } from '@ngrx/store';
 import { map } from 'rxjs';
 
@@ -11,7 +12,7 @@ import { ETransactionType, ITransaction } from '../transfer/common/transaction.i
 @Component({
     selector: 'app-dashboard',
     standalone: true,
-    imports: [AsyncPipe],
+    imports: [AsyncPipe, DatePipe, NgForOf, KeyValuePipe, NgIf, MatButton],
     templateUrl: './dashboard.component.html',
     styleUrl: './dashboard.component.scss',
 })
@@ -59,5 +60,28 @@ export class DashboardComponent {
                 return acc - transaction.amount;
             }, 0),
         ),
+    );
+
+    dailyTransactions$ = this.userData$.pipe(
+        map(user => {
+            const dailyTransactions: Map<string, number> = new Map();
+            user.transactions.forEach((transaction: ITransaction) => {
+                const time = transaction.recurrenceStartDate as any;
+                const date = new Date(time.seconds * 1000 + time.nanoseconds / 1000000);
+                const dateString = date.toDateString();
+                if (dailyTransactions.has(dateString)) {
+                    const value = dailyTransactions.get(dateString) ?? 0;
+                    if (transaction.type === ETransactionType.Income) {
+                        dailyTransactions.set(dateString, value + transaction.amount);
+                    } else {
+                        dailyTransactions.set(dateString, value - transaction.amount);
+                    }
+                    dailyTransactions.set(dateString, dailyTransactions.get(dateString)! + transaction.amount);
+                } else {
+                    dailyTransactions.set(dateString, transaction.amount);
+                }
+            });
+            return dailyTransactions;
+        }),
     );
 }

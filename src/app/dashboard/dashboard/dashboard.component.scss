@@ -1,0 +1,33 @@
+.transaction-container {
+    margin: 20px;
+}
+
+.transaction-header {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.transaction-table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.transaction-table th,
+.transaction-table td {
+    padding: 12px;
+    text-align: left;
+}
+
+.transaction-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.transaction-row:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.transaction-row:hover {
+    background-color: #ddd;
+}
