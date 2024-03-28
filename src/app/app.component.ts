@@ -33,6 +33,7 @@ export class AppComponent implements OnInit {
                         uid: userData?.['uid'],
                         name: userData?.['name'],
                         advisorAccount: userData?.['advisorAccount'],
+                        transactions: userData?.['transactions'],
                     };
                     this.store.dispatch(SetUserDataAction({ user: userDataAsIUser }));
                 });
