@@ -9,6 +9,7 @@ const initialState: IUserState = {
         uid: '',
         name: '',
         advisorAccount: false,
+        transactions: [],
     },
 };
 
