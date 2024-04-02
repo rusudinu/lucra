@@ -1,0 +1,28 @@
+<div *ngIf="previousRequests" class="container m-5">
+    <div class="row">
+        <h2 class="request-header col-10">Advisor reports</h2>
+    </div>
+    <table class="request-table">
+        <thead>
+            <tr>
+                <th>Advisor</th>
+                <th>Score</th>
+                <th>Conclusions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let request of previousRequests" class="request-row">
+                <td>{{ request.advisorEmail }}</td>
+                <td>{{ request.score }}</td>
+                <td class="d-flex justify-content-between">
+                    {{
+                        request.advisorConclusions.length > 20
+                            ? request.advisorConclusions.substring(0, 20) + '...'
+                            : request.advisorConclusions
+                    }}
+                    <mat-icon (click)="openInfoDialog(request)"> info </mat-icon>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,29 @@
+.green-theme {
+    background-color: #4caf50;
+    color: white;
+}
+
+.yellow-theme {
+    background-color: #ffc107;
+    color: #333;
+}
+
+.red-theme {
+    background-color: #f44336;
+    color: white;
+}
+
+at-card-title {
+    margin-bottom: 0.5rem;
+}
+
+mat-card-content {
+    display: flex;
+    margin-right: auto;
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+}
+
+mat-card-content mat-icon {
+    margin-right: 5px;
+}
