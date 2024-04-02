@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
+import { DashboardComponent } from './layouts/dashboard/dashboard.component';
 
 describe('AppComponent', () => {
     beforeEach(async () => {
