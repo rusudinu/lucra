@@ -1,4 +1,4 @@
-<div *ngIf="dailyTransactions$ | async as transactions" class="container m-5">
+<div *ngIf="dailyTransactions$ | async as transactions" class="container">
     <div class="row">
         <h2 class="transaction-header col-10">Daily Transactions, Balance: {{ totalBalance$ | async }} RON</h2>
         <button mat-raised-button class="col-2 mat-primary" (click)="openRequestAdvisorModal()">Request an advisor</button>
