@@ -5,6 +5,7 @@ import { MatButton } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 
+import { PendingRequestReviewModalComponent } from './pending-request-review-modal/pending-request-review-modal.component';
 import { IAppState } from '../../../common/interface/app-state.interface';
 import { selectUser } from '../../../user/store/user.selectors';
 import { IRequestAdvisor } from '../common/interface/advisor-request.interface';
@@ -41,6 +42,10 @@ export class PendingRequestsComponent implements OnInit {
         deleteDoc(docRef).then();
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    reviewRequest(request: IRequestAdvisor) {}
+    reviewRequest(request: IRequestAdvisor) {
+        this.dialog.open(PendingRequestReviewModalComponent, {
+            data: request,
+            maxHeight: '80%',
+        });
+    }
 }

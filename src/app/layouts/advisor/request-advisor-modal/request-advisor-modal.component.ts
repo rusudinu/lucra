@@ -74,6 +74,7 @@ export class RequestAdvisorModalComponent {
             frequencyOfInvestment: this.requestForm.get('frequencyOfInvestment')!.value,
             isPending: this.requestForm.get('isPending')!.value,
             score: -1,
+            advisorConclusions: '',
         };
     }
 
