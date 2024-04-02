@@ -2,6 +2,7 @@ import { NgForOf, NgIf } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { collection, deleteDoc, doc, Firestore, onSnapshot, query, where } from '@angular/fire/firestore';
 import { MatButton } from '@angular/material/button';
+import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 
 import { IAppState } from '../../../common/interface/app-state.interface';
@@ -20,6 +21,7 @@ export class PendingRequestsComponent implements OnInit {
     firestore: Firestore = inject(Firestore);
     userData$ = this.store.select(selectUser);
     pendingRequests: IRequestAdvisor[] = [];
+    dialog: MatDialog = inject(MatDialog);
 
     ngOnInit(): void {
         this.userData$.subscribe(user => {
