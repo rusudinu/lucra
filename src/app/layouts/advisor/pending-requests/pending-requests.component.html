@@ -1,0 +1,22 @@
+<div *ngIf="pendingRequests" class="container m-5">
+    <div class="row">
+        <h2 class="request-header col-10">Pending advisory requests</h2>
+    </div>
+    <table class="request-table">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let request of pendingRequests" class="request-row">
+                <td>{{ request.userEmail }}</td>
+                <td>
+                    <button class="btn btn-success" (click)="reviewRequest(request)">Review</button>
+                    <button class="btn btn-danger ms-1" (click)="deleteRequest(request)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

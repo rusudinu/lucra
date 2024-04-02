@@ -1,0 +1,57 @@
+<h1 mat-dialog-title>Review request - {{ userEmail }}</h1>
+<div class="container">
+    <div mat-dialog-content>
+        <p class="mb-3">
+            Please provide your feedback on the review request from {{ userEmail }}. The user that requested the review will be able to see
+            your feedback.
+        </p>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <mat-card>
+                    <mat-card-header>
+                        <mat-card-title>Account Information</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <mat-icon>account_balance</mat-icon>
+                        Account Balance: {{ accountBalance }} RON
+                    </mat-card-content>
+                </mat-card>
+            </div>
+            <div class="col-md-6">
+                <mat-card>
+                    <mat-card-header>
+                        <mat-card-title>Investment Information</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <mat-icon>attach_money</mat-icon>
+                        Initial Investment: {{ initialInvestment }} RON
+                        <br />
+                        <mat-icon>add_circle</mat-icon>
+                        Additional Investment: {{ additionalInvestment }} RON
+                        <br />
+                        <mat-icon>alarm</mat-icon>
+                        Frequency of Investment: {{ frequencyOfInvestment }}
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+        <form [formGroup]="reviewForm" class="row">
+            <mat-form-field>
+                <mat-label>Advisor Conclusions</mat-label>
+                <textarea matInput formControlName="advisorConclusions" rows="5"></textarea>
+                <mat-error *ngIf="reviewForm.get('advisorConclusions')!.invalid">This field is required</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Score</mat-label>
+                <mat-select formControlName="score">
+                    <mat-option *ngFor="let score of [1, 2, 3, 4, 5]" [value]="score">{{ score }}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="reviewForm.get('score')!.invalid">Please select a score</mat-error>
+            </mat-form-field>
+        </form>
+    </div>
+</div>
+<div mat-dialog-actions class="d-flex justify-content-end">
+    <button mat-button mat-dialog-close>Close</button>
+    <button mat-button color="primary" (click)="submitReview()" [disabled]="!reviewForm.valid">Send</button>
+</div>

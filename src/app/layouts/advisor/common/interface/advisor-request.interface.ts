@@ -1,4 +1,5 @@
 export interface IRequestAdvisor {
+    requestId: string;
     userId: string;
     userEmail: string;
     advisorId: string;
@@ -9,4 +10,5 @@ export interface IRequestAdvisor {
     frequencyOfInvestment: string;
     isPending: boolean;
     advisorConclusions: string;
+    score: number;
 }

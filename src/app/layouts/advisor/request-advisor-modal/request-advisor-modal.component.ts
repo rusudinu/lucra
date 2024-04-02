@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { addDoc, collection, Firestore, getDocs, query, where } from '@angular/fire/firestore';
+import { addDoc, collection, doc, Firestore, getDocs, query, updateDoc, where } from '@angular/fire/firestore';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
 import { MatDialogActions, MatDialogClose, MatDialogContent, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
@@ -62,11 +62,31 @@ export class RequestAdvisorModalComponent {
             });
     }
 
+    requestFormToRequestAdvisor() {
+        return {
+            userId: this.requestForm.get('userId')!.value,
+            userEmail: this.requestForm.get('userEmail')!.value,
+            advisorId: this.requestForm.get('advisorId')!.value,
+            advisorEmail: this.requestForm.get('advisorEmail')!.value,
+            accountBalance: this.requestForm.get('accountBalance')!.value,
+            initialInvestment: this.requestForm.get('initialInvestment')!.value,
+            additionalInvestment: this.requestForm.get('additionalInvestment')!.value,
+            frequencyOfInvestment: this.requestForm.get('frequencyOfInvestment')!.value,
+            isPending: this.requestForm.get('isPending')!.value,
+            score: -1,
+            advisorConclusions: '',
+        };
+    }
+
     sendAdvisorRequest() {
         if (this.requestForm.valid) {
             const collectionRef = collection(this.firestore, 'advisorRequests');
-            addDoc(collectionRef, this.requestForm.value).then(() => {
-                this.dialogRef.close();
+            addDoc(collectionRef, this.requestFormToRequestAdvisor()).then(documentReference => {
+                const docId = documentReference.id;
+                const docRef = doc(collectionRef, docId);
+                updateDoc(docRef, { requestId: docId }).then(() => {
+                    this.dialogRef.close(true);
+                });
             });
         }
     }
