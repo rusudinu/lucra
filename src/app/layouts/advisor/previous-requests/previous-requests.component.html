@@ -1,0 +1,21 @@
+<div *ngIf="previousRequests" class="container m-5">
+    <div class="row">
+        <h2 class="request-header col-10">Already completed requests</h2>
+    </div>
+    <table class="request-table">
+        <thead>
+            <tr>
+                <th>Requester</th>
+                <th>Score</th>
+                <th>Conclusions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let request of previousRequests" class="request-row">
+                <td>{{ request.userEmail }}</td>
+                <td>{{ request.score }}</td>
+                <td>{{ request.advisorConclusions }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
