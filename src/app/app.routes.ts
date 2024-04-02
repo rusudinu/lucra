@@ -5,6 +5,7 @@ import { PendingRequestsComponent } from './layouts/advisor/pending-requests/pen
 import { PreviousRequestsComponent } from './layouts/advisor/previous-requests/previous-requests.component';
 import { DashboardComponent } from './layouts/dashboard/dashboard.component';
 import { InvestmentCalculatorComponent } from './layouts/investment-calculator/investment-calculator.component';
+import { ReportsComponent } from './layouts/reports/reports.component';
 import { TransferComponent } from './layouts/transfer/transfer.component';
 import { ProfileComponent } from './user/profile/profile.component';
 import { UserLoginComponent } from './user/user-login/user-login.component';
@@ -46,7 +47,7 @@ export const routes: Routes = [
     },
     {
         path: 'reports',
-        component: DashboardComponent,
+        component: ReportsComponent,
         canActivate: [AuthGuard],
         data: { authGuardPipe: redirectUnauthorizedToLanding },
     },
