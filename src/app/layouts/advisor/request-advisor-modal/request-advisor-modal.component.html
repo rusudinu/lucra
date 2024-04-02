@@ -1,0 +1,35 @@
+<h1 mat-dialog-title>Request Advisor</h1>
+<div class="container">
+    <div mat-dialog-content>
+        <form [formGroup]="requestForm" class="row">
+            <mat-form-field>
+                <input matInput placeholder="User ID" formControlName="userId" />
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="User Email" formControlName="userEmail" />
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Advisor ID" formControlName="advisorId" />
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Advisor Email" formControlName="advisorEmail" />
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput type="number" placeholder="Account Balance" formControlName="accountBalance" />
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput type="number" placeholder="Initial Investment" formControlName="initialInvestment" />
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput type="number" placeholder="Additional Investment" formControlName="additionalInvestment" />
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Frequency of Investment" formControlName="frequencyOfInvestment" />
+            </mat-form-field>
+        </form>
+    </div>
+</div>
+<div mat-dialog-actions class="d-flex justify-content-end">
+    <button mat-button mat-dialog-close>Close</button>
+    <button mat-button color="primary" (click)="sendAdvisorRequest()" [disabled]="!requestForm.valid">Send</button>
+</div>
