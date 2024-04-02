@@ -1,4 +1,4 @@
-import { ITransaction } from '../dashboard/transfer/common/transaction.interface';
+import { ITransaction } from '../layouts/transfer/common/transaction.interface';
 
 export interface IUser {
     name: string;

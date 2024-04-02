@@ -1,11 +1,13 @@
 import { AsyncPipe, DatePipe, KeyValuePipe, NgForOf, NgIf } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { MatButton } from '@angular/material/button';
+import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { map } from 'rxjs';
 
 import { IAppState } from '../../common/interface/app-state.interface';
 import { selectUser } from '../../user/store/user.selectors';
+import { RequestAdvisorModalComponent } from '../advisor/request-advisor-modal/request-advisor-modal.component';
 import { ERecurrence } from '../transfer/common/recurrence.enum';
 import { ETransactionType, ITransaction } from '../transfer/common/transaction.interface';
 
@@ -18,6 +20,7 @@ import { ETransactionType, ITransaction } from '../transfer/common/transaction.i
 })
 export class DashboardComponent {
     store: Store<IAppState> = inject(Store);
+    dialog: MatDialog = inject(MatDialog);
     userData$ = this.store.select(selectUser);
     totalBalance$ = this.userData$.pipe(
         map(user =>
@@ -84,4 +87,10 @@ export class DashboardComponent {
             return dailyTransactions;
         }),
     );
+
+    openRequestAdvisorModal(): void {
+        this.dialog.open(RequestAdvisorModalComponent, {
+            maxHeight: '80%',
+        });
+    }
 }
