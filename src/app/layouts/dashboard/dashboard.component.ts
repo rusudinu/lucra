@@ -1,7 +1,8 @@
 import { AsyncPipe, DatePipe, KeyValuePipe, NgForOf, NgIf } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { map } from 'rxjs';
 
@@ -18,9 +19,10 @@ import { ETransactionType, ITransaction } from '../transfer/common/transaction.i
     templateUrl: './dashboard.component.html',
     styleUrl: './dashboard.component.scss',
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
     store: Store<IAppState> = inject(Store);
     dialog: MatDialog = inject(MatDialog);
+    router: Router = inject(Router);
     userData$ = this.store.select(selectUser);
     totalBalance$ = this.userData$.pipe(
         map(user =>
@@ -87,6 +89,14 @@ export class DashboardComponent {
             return dailyTransactions;
         }),
     );
+
+    ngOnInit() {
+        this.userData$.subscribe(user => {
+            if (user.advisorAccount) {
+                this.router.navigate(['pending-requests']).then();
+            }
+        });
+    }
 
     openRequestAdvisorModal(): void {
         this.dialog.open(RequestAdvisorModalComponent, {
