@@ -1,0 +1,55 @@
+<h1 mat-dialog-title>Review info from - {{ advisorEmail }}</h1>
+<div class="container">
+    <div mat-dialog-content>
+        <p class="mb-3">This is the feedback provided by the advisor based on the information you provided.</p>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <mat-card class="mb-2">
+                    <mat-card-header>
+                        <mat-card-title>Account Information</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <mat-icon>account_balance</mat-icon>
+                        Account Balance: {{ accountBalance }} RON
+                    </mat-card-content>
+                </mat-card>
+                <mat-card [ngClass]="getScoreTheme(score)">
+                    <mat-card-content>
+                        <mat-icon>score</mat-icon>
+                        Advisor score: {{ score }}
+                    </mat-card-content>
+                </mat-card>
+            </div>
+            <div class="col-md-6">
+                <mat-card>
+                    <mat-card-header>
+                        <mat-card-title>Investment Information</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <mat-icon>attach_money</mat-icon>
+                        Initial Investment: {{ initialInvestment }} RON
+                    </mat-card-content>
+                    <mat-card-content>
+                        <mat-icon>add_circle</mat-icon>
+                        Additional Investment: {{ additionalInvestment }} RON
+                    </mat-card-content>
+                    <mat-card-content>
+                        <mat-icon>alarm</mat-icon>
+                        Frequency of Investment: {{ frequencyOfInvestment }}
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>Advisor conclusions</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                {{ advisorConclusions }}
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+<div mat-dialog-actions class="d-flex justify-content-end">
+    <button mat-button mat-dialog-close>Close</button>
+</div>

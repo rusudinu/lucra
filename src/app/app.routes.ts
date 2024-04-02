@@ -1,9 +1,12 @@
 import { AuthGuard, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 import { Routes } from '@angular/router';
 
-import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
-import { InvestmentCalculatorComponent } from './dashboard/investment-calculator/investment-calculator.component';
-import { TransferComponent } from './dashboard/transfer/transfer.component';
+import { PendingRequestsComponent } from './layouts/advisor/pending-requests/pending-requests.component';
+import { PreviousRequestsComponent } from './layouts/advisor/previous-requests/previous-requests.component';
+import { DashboardComponent } from './layouts/dashboard/dashboard.component';
+import { InvestmentCalculatorComponent } from './layouts/investment-calculator/investment-calculator.component';
+import { ReportsComponent } from './layouts/reports/reports.component';
+import { TransferComponent } from './layouts/transfer/transfer.component';
 import { ProfileComponent } from './user/profile/profile.component';
 import { UserLoginComponent } from './user/user-login/user-login.component';
 import { UserRegisterComponent } from './user/user-register/user-register.component';
@@ -44,19 +47,19 @@ export const routes: Routes = [
     },
     {
         path: 'reports',
-        component: DashboardComponent,
+        component: ReportsComponent,
         canActivate: [AuthGuard],
         data: { authGuardPipe: redirectUnauthorizedToLanding },
     },
     {
         path: 'pending-requests',
-        component: DashboardComponent,
+        component: PendingRequestsComponent,
         canActivate: [AuthGuard],
         data: { authGuardPipe: redirectUnauthorizedToLanding },
     },
     {
         path: 'previous-requests',
-        component: DashboardComponent,
+        component: PreviousRequestsComponent,
         canActivate: [AuthGuard],
         data: { authGuardPipe: redirectUnauthorizedToLanding },
     },
