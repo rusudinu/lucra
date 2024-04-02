@@ -1,6 +1,7 @@
 import { AuthGuard, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 import { Routes } from '@angular/router';
 
+import { PendingRequestsComponent } from './layouts/advisor/pending-requests/pending-requests.component';
 import { DashboardComponent } from './layouts/dashboard/dashboard.component';
 import { InvestmentCalculatorComponent } from './layouts/investment-calculator/investment-calculator.component';
 import { TransferComponent } from './layouts/transfer/transfer.component';
@@ -50,7 +51,7 @@ export const routes: Routes = [
     },
     {
         path: 'pending-requests',
-        component: DashboardComponent,
+        component: PendingRequestsComponent,
         canActivate: [AuthGuard],
         data: { authGuardPipe: redirectUnauthorizedToLanding },
     },
