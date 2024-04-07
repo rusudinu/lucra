@@ -3,7 +3,7 @@
 
 This is a project in Angular using firebase that aims to help users track their income and expenses, and get feedback from specialists.
 
-If God was good, you can check it out here: [Lucra]https://github.com/rusudinu/lucra/blob/master/screenshots/https://lucra.codingshadows.com?raw=true), if not, that means that hosting became expensive.
+If God was good, you can check it out here: [Lucra](https://lucra.codingshadows.com), if not, that means that hosting became expensive.
 
 User screenshots:
 ![investments_calculator.png](https://github.com/rusudinu/lucra/blob/master/screenshots/%2Finvestments_calculator.png?raw=true)
